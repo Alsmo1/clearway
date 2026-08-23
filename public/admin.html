@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClearWay — Admin</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<style>
+  .admin-shell { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+  .admin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .lock-screen { max-width: 340px; margin: 90px auto; text-align: center; }
+  .lock-screen .panel-pad { text-align: left; }
+  .backup-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  #adminApp { display: none; }
+</style>
+</head>
+<body>
+
+<div id="lockScreen" class="lock-screen">
+  <div class="brand" style="justify-content:center;margin-bottom:16px;">
+    <div class="brand-mark"></div><div class="brand-name">ClearWay Admin</div>
+  </div>
+  <div class="panel panel-pad">
+    <form id="loginForm">
+      <div class="field"><label for="pw">Admin password</label><input id="pw" type="password" required /></div>
+      <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;">Enter</button>
+      <div id="loginError" style="color:var(--brick);font-size:12.5px;margin-top:8px;"></div>
+    </form>
+  </div>
+</div>
+
+<div id="adminApp" class="admin-shell">
+  <div class="admin-head">
+    <div><h1 class="page-title" style="margin:0;">Admin dashboard</h1><div class="page-sub">Overview, data, and backups</div></div>
+    <a class="btn" href="/index.html">← Back to app</a>
+  </div>
+
+  <div class="stat-grid" id="statGrid"></div>
+
+  <div class="panel">
+    <div class="panel-head"><h2>Local backups</h2></div>
+    <div class="panel-pad backup-row">
+      <div>
+        <div id="backupStatus" style="font-weight:600;color:var(--sage);">Saved on this device</div>
+        <div class="page-sub" id="lastBackup"></div>
+        <div class="page-sub" id="backupFolder" style="font-family:var(--font-mono);margin-top:4px;"></div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-primary" id="backupNow">Back up now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h2>Spending by category</h2></div>
+    <div class="panel-pad" id="categoryBreakdown"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h2>Check-ins, last 7 days</h2></div>
+    <div class="panel-pad" id="checkinChart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h2>Export</h2></div>
+    <div class="panel-pad">
+      <p class="page-sub">Download the same organized workbook that gets saved to your backups folder — sheets for Summary, Habits, Check-ins, To-Dos, Expenses, and Goals.</p>
+      <a class="btn btn-primary" href="/api/export/excel">Download Excel export</a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

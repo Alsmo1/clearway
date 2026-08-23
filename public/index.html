@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClearWay</title>
+<meta name="description" content="A quiet place to track habits, to-dos, and spending — offline-first, all on your own device." />
+<meta name="theme-color" content="#F3F5F2" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div class="brand-name">ClearWay</div>
+    </div>
+
+    <nav class="nav" aria-label="Main sections">
+      <button class="nav-link active" data-view="today"><span class="nav-dot"></span>Today</button>
+      <button class="nav-link" data-view="habits"><span class="nav-dot"></span>Habits</button>
+      <button class="nav-link" data-view="todos"><span class="nav-dot"></span>To-Dos</button>
+      <button class="nav-link" data-view="expenses"><span class="nav-dot"></span>Expenses</button>
+      <button class="nav-link" data-view="goals"><span class="nav-dot"></span>Goals</button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="status-pill" id="statusPill" data-state="offline">
+        <span class="status-dot"></span>
+        <span id="statusText">Checking connection…</span>
+      </div>
+      <a class="admin-link" href="/admin.html">Admin dashboard →</a>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <!-- views are rendered here by app.js -->
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/js/db.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/sync.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
